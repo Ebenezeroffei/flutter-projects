@@ -18,10 +18,10 @@ class HomePage extends StatelessWidget {
         slivers: [
           SliverList.list(
             children: const <App>[
-              App(
-                appName: "Temperature Converter",
-                path: '/temperature-converter',
-              ),
+              // App(
+              //   appName: "Temperature Converter",
+              //   path: '/temperature-converter',
+              // ),
               App(
                 appName: "Dog Breeds",
                 path: '/dog-breeds',

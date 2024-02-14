@@ -22,7 +22,11 @@ class DogBreedListItem extends StatelessWidget {
           ),
         ),
         child: ListTile(
-          // onTap: () async => await Navigator.pushNamed(context, path),
+          onTap: () async => await Navigator.pushNamed(
+            context,
+            '/dog-breeds/detail',
+            arguments: dogBreedName,
+          ),
           tileColor: Colors.white,
           title: Text(
             dogBreedName.title(),

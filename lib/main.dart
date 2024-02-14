@@ -18,7 +18,7 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       title: 'Flutter Projects',
       debugShowCheckedModeBanner:
-          dotenv.get('DEBUG', fallback: 'true') == 'true',
+          dotenv.get('DEBUG', fallback: 'true') == '6true',
       theme: ThemeData(
         colorScheme: ColorScheme.fromSeed(seedColor: Colors.blue),
         useMaterial3: true,

@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_projects/core/components/custom_refresh.dart';
+import 'package:flutter_projects/core/extensions/padding_extenstion.dart';
 import 'package:flutter_projects/dog-breeds/components/dog_breed_list_item.dart';
 import 'package:flutter_projects/dog-breeds/components/dog_breeds_shimmer.dart';
 import 'package:flutter_projects/dog-breeds/providers/dog_breed_providers.dart';
@@ -23,17 +24,19 @@ class DogBreedsPage extends ConsumerWidget {
           : dogBreeds.when(
               data: (data) {
                 final List dogBreeds = data.keys.toList();
-                return ListView.builder(
+                return CustomScrollView(
                   physics: const BouncingScrollPhysics(),
-                  padding: const EdgeInsets.all(10),
-                  itemBuilder: (_, index) {
-                    final String item = dogBreeds[index];
-                    return DogBreedListItem(
-                      dogBreedName: item,
-                    );
-                  },
-                  itemCount: dogBreeds.length,
-                );
+                  slivers: [
+                    SliverList(
+                      delegate: SliverChildBuilderDelegate((context, index) {
+                        final String item = dogBreeds[index];
+                        return DogBreedListItem(
+                          dogBreedName: item,
+                        );
+                      }, childCount: dogBreeds.length),
+                    ),
+                  ],
+                ).pad(10);
               },
               error: (_, __) => CustomRefresh(
                   onClickHandler: () => ref.invalidate(providerOfDogBreedList)),
