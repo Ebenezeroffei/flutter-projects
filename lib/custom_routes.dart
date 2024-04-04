@@ -3,6 +3,7 @@ import 'package:flutter_projects/core/main.dart';
 import 'package:flutter_projects/dog-breeds/main.dart';
 import 'package:flutter_projects/dog-breeds/pages/dog_breed_image.dart';
 import 'package:flutter_projects/dog-breeds/pages/dog_breeds_detail.dart';
+import 'package:flutter_projects/shopicon/presentation/pages/main.dart';
 import 'package:flutter_projects/temperature-converter/main.dart';
 
 class CustomRoutes {
@@ -14,10 +15,12 @@ class CustomRoutes {
 
   static Route<dynamic> generateRoute(RouteSettings settings) {
     switch (settings.name) {
+      // Temperature Converter
       case '/':
         return goTo(const HomePage());
       case '/temperature-converter':
         return goTo(const TemperatureConverterPage());
+      // Dog Breeds
       case '/dog-breeds':
         return goTo(const DogBreedsPage());
       case '/dog-breeds/detail':
@@ -40,6 +43,9 @@ class CustomRoutes {
           );
         }
         return goTo(errorPage());
+      // Shopicon
+      case '/shopicon':
+        return goTo(Shopicon());
       default:
         return goTo(errorPage());
     }

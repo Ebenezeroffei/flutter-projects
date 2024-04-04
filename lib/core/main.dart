@@ -26,6 +26,10 @@ class HomePage extends StatelessWidget {
                 appName: "Dog Breeds",
                 path: '/dog-breeds',
               ),
+              App(
+                appName: "Shopicon",
+                path: '/shopicon',
+              ),
             ],
           ),
         ],
