@@ -3,7 +3,10 @@ import 'package:flutter_projects/core/main.dart';
 import 'package:flutter_projects/dog-breeds/main.dart';
 import 'package:flutter_projects/dog-breeds/pages/dog_breed_image.dart';
 import 'package:flutter_projects/dog-breeds/pages/dog_breeds_detail.dart';
+import 'package:flutter_projects/shopicon/domain/entities/product.dart';
+import 'package:flutter_projects/shopicon/presentation/pages/categories/category_products.dart';
 import 'package:flutter_projects/shopicon/presentation/pages/main.dart';
+import 'package:flutter_projects/shopicon/presentation/pages/product/product_detail.dart';
 import 'package:flutter_projects/temperature-converter/main.dart';
 
 class CustomRoutes {
@@ -46,6 +49,18 @@ class CustomRoutes {
       // Shopicon
       case '/shopicon':
         return goTo(Shopicon());
+      case '/categories':
+        if (settings.arguments is String) {
+          final String category = settings.arguments.toString();
+          return goTo(CategoryProducts(category: category));
+        }
+        return goTo(errorPage());
+      case '/products/detail':
+        if (settings.arguments is Product) {
+          final Product product = settings.arguments as Product;
+          return goTo(ProductDetail(product: product));
+        }
+        return goTo(errorPage());
       default:
         return goTo(errorPage());
     }

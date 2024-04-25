@@ -8,7 +8,7 @@ class GetProducts {
 
   GetProducts(this._repository);
 
-  Future<Either<Failure, List<Product>>> execute(String? category) {
-    return _repository.getProducts(category);
+  Future<Either<Failure, List<Product>>> execute(String? category) async {
+    return await _repository.getProducts(category);
   }
 }

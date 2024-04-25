@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_projects/shopicon/presentation/pages/cart.dart';
-import 'package:flutter_projects/shopicon/presentation/pages/categories.dart';
+import 'package:flutter_projects/shopicon/presentation/pages/cart/cart.dart';
+import 'package:flutter_projects/shopicon/presentation/pages/categories/categories.dart';
 import 'package:flutter_projects/shopicon/presentation/pages/home/home.dart';
 import 'package:flutter_projects/shopicon/presentation/providers/shopicon_providers.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';

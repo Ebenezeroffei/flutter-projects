@@ -12,9 +12,11 @@ class ProductItem extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
-      onTap: () {
-        print(item.id);
-      },
+      onTap: () async => await Navigator.pushNamed(
+        context,
+        '/products/detail',
+        arguments: item,
+      ),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
@@ -80,7 +82,7 @@ class ProductItem extends StatelessWidget {
               ),
               children: <TextSpan>[
                 TextSpan(
-                    text: " ${item.stock}+ left",
+                    text: " ${item.stock} left",
                     style: const TextStyle(
                       fontSize: 10,
                       color: Colors.black38,

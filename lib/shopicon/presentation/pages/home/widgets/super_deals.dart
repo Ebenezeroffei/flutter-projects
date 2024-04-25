@@ -12,9 +12,11 @@ class SuperDealItem extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
-      onTap: () {
-        print(item.id);
-      },
+      onTap: () async => await Navigator.pushNamed(
+        context,
+        '/products/detail',
+        arguments: item,
+      ),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [

@@ -1,11 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_dotenv/flutter_dotenv.dart';
+import 'package:flutter_projects/core/utils/misc_utils.dart';
 import 'package:flutter_projects/custom_routes.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 
 void main() async {
   await dotenv.load();
-
+  await MiscUtils.initHive();
   runApp(const ProviderScope(child: MyApp()));
 }
 
@@ -21,6 +22,7 @@ class MyApp extends StatelessWidget {
           dotenv.get('DEBUG', fallback: 'true') == '6true',
       theme: ThemeData(
         colorScheme: ColorScheme.fromSeed(seedColor: Colors.blue),
+        primarySwatch: Colors.blue,
         useMaterial3: true,
       ),
       initialRoute: '/',

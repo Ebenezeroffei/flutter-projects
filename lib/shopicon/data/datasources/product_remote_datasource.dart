@@ -4,11 +4,11 @@ import 'package:flutter_projects/core/error/exception.dart';
 import 'package:flutter_projects/shopicon/data/models/product_model.dart';
 import 'package:http/http.dart' as http;
 
-abstract class RemoteDataSource {
+abstract class ProductRemoteDataSource {
   Future<List<ProductModel>> getProducts(String? category);
 }
 
-class RemoteDataSourceImpl extends RemoteDataSource {
+class ProductRemoteDataSourceImpl extends ProductRemoteDataSource {
   @override
   Future<List<ProductModel>> getProducts(String? category) async {
     final url = category != null
