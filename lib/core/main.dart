@@ -30,6 +30,10 @@ class HomePage extends StatelessWidget {
                 appName: "Shopicon",
                 path: '/shopicon',
               ),
+              // App(
+              //   appName: "Orderz",
+              //   path: '/orderz',
+              // ),
             ],
           ),
         ],

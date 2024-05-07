@@ -62,7 +62,6 @@ class ShopiconUtils {
         ),
       );
     }
-    await Hive.close();
   }
 
   static modifyCartQuantity(
@@ -94,6 +93,5 @@ class ShopiconUtils {
       );
       ref.invalidate(providerOfCart);
     }
-    await Hive.close();
   }
 }

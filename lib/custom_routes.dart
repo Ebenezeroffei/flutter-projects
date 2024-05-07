@@ -3,6 +3,8 @@ import 'package:flutter_projects/core/main.dart';
 import 'package:flutter_projects/dog-breeds/main.dart';
 import 'package:flutter_projects/dog-breeds/pages/dog_breed_image.dart';
 import 'package:flutter_projects/dog-breeds/pages/dog_breeds_detail.dart';
+import 'package:flutter_projects/orderz/presentation/pages/home/orderz.dart';
+import 'package:flutter_projects/orderz/presentation/pages/order_form/order_form.dart';
 import 'package:flutter_projects/shopicon/domain/entities/product.dart';
 import 'package:flutter_projects/shopicon/presentation/pages/categories/category_products.dart';
 import 'package:flutter_projects/shopicon/presentation/pages/main.dart';
@@ -61,6 +63,11 @@ class CustomRoutes {
           return goTo(ProductDetail(product: product));
         }
         return goTo(errorPage());
+      // Orderz
+      case '/orderz':
+        return goTo(const Orderz());
+      case '/orderz/form':
+        return goTo(OrderForm());
       default:
         return goTo(errorPage());
     }
