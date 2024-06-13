@@ -2,11 +2,14 @@ import 'package:flutter/material.dart';
 import 'package:flutter_dotenv/flutter_dotenv.dart';
 import 'package:flutter_projects/core/utils/misc_utils.dart';
 import 'package:flutter_projects/custom_routes.dart';
+import 'package:flutter_projects/orderz/domain/entities/order.dart';
+import 'package:hive_flutter/adapters.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 
 void main() async {
   await dotenv.load();
   await MiscUtils.initHive();
+  await Hive.openBox<OrderEntity>('ordersBox');
   runApp(const ProviderScope(child: MyApp()));
 }
 

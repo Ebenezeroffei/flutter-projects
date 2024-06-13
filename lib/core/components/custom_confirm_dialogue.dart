@@ -6,7 +6,7 @@ class CustomConfirmDialogue extends StatelessWidget {
   final VoidCallback onYesResponse;
   final VoidCallback onNoResponse;
 
-  const CustomConfirmDialogue({
+  CustomConfirmDialogue({
     super.key,
     required this.title,
     required this.message,

@@ -8,16 +8,15 @@ class AddOrder {
 
   AddOrder(this._repository);
 
-  Future<Either<Failure, OrderEntity>> execute(
-          {required String name,
-          required String contact,
-          required Map<String, int> orderItems,
-          required double total,
-          required bool isFulfilled}) =>
+  Future<Either<Failure, OrderEntity>> execute({
+    required String name,
+    required String contact,
+    required double total,
+    required bool isFulfilled,
+  }) =>
       _repository.addOrder(
         name: name,
         contact: contact,
-        orderItems: orderItems,
         total: total,
         isFulfilled: isFulfilled,
       );

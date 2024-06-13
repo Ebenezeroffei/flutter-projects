@@ -12,17 +12,19 @@ class OrdersRepositoriesImpl implements OrderRepositories {
   Future<Either<Failure, OrderEntity>> addOrder({
     required String name,
     required String contact,
-    required Map<String, int> orderItems,
     required double total,
     required bool isFulfilled,
+    bool isEdit = false,
+    String? itemId,
   }) async {
     try {
       final OrderEntity order = await localDataSource.addOrder(
         name: name,
         contact: contact,
-        orderItems: orderItems,
         total: total,
         isFulfilled: isFulfilled,
+        isEdit: isEdit,
+        itemId: itemId,
       );
       return Right(order);
     } on DeviceException catch (e) {

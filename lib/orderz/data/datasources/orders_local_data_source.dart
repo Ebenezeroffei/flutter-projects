@@ -6,9 +6,10 @@ abstract class OrderLocalDataSource {
   Future<OrderEntity> addOrder({
     required String name,
     required String contact,
-    required Map<String, int> orderItems,
     required double total,
     required bool isFulfilled,
+    bool isEdit = false,
+    String? itemId,
   });
 }
 
@@ -17,23 +18,42 @@ class OrderLocalDataSourceImpl implements OrderLocalDataSource {
   Future<OrderEntity> addOrder({
     required String name,
     required String contact,
-    required Map<String, int> orderItems,
     required double total,
     required bool isFulfilled,
+    bool isEdit = false,
+    String? itemId,
   }) async {
     try {
-      await Hive.openBox<OrderEntity>('ordersBox');
       final Box<OrderEntity> orders = Hive.box<OrderEntity>('ordersBox');
-      OrderEntity order = OrderEntity(
-        contact: contact,
-        isFulfilled: isFulfilled,
-        name: name,
-        orderItems: orderItems,
-        total: total,
-      );
-
-      orders.put(order.id, order);
-      return order;
+      if (isEdit) {
+        print(itemId);
+        OrderEntity? order = orders.get(itemId);
+        if (order != null) {
+          order = order.update(
+            name: name,
+            contact: contact,
+            total: total,
+            isFulfilled: isFulfilled,
+          );
+          await orders.put(order.id, order);
+          return order;
+        }
+        return OrderEntity(
+          name: name,
+          contact: contact,
+          isFulfilled: isFulfilled,
+          total: total,
+        );
+      } else {
+        OrderEntity order = OrderEntity(
+          contact: contact,
+          isFulfilled: isFulfilled,
+          name: name,
+          total: total,
+        );
+        await orders.put(order.id, order);
+        return order;
+      }
     } catch (e) {
       throw DeviceException("An error occurred while adding orders");
     }
