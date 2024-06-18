@@ -66,7 +66,7 @@ class CustomRoutes {
         return goTo(errorPage());
       // Orderz
       case '/orderz':
-        return goTo(const Orderz());
+        return goTo(Orderz());
       case '/orderz/form':
         OrderEntity? order;
         bool isEdit = false;

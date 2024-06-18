@@ -8,7 +8,7 @@ import 'package:hive_flutter/adapters.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 
 class Orderz extends ConsumerWidget {
-  const Orderz({super.key});
+  Orderz({super.key});
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
@@ -25,6 +25,7 @@ class Orderz extends ConsumerWidget {
         valueListenable: orders.listenable(),
         builder: (context, box, _) {
           List<OrderEntity> data = box.values.toList();
+
           switch (selectedOrderFilter) {
             case OrderFilters.fulfilled:
               data.retainWhere((element) => element.isFulfilled);
@@ -65,14 +66,30 @@ class Orderz extends ConsumerWidget {
               ],
             ).pad(10);
           }
+
+          // Calculate total
+          double total = data.fold<double>(
+            0,
+            (currentValue, order) => currentValue += order.total,
+          );
           return CustomScrollView(
             slivers: [
               const SliverToBoxAdapter(
                 child: OrderFilter(),
               ),
+              SliverToBoxAdapter(
+                child: Text(
+                  "Total: ${total.toStringAsFixed(2)}",
+                  style: theme.textTheme.bodyLarge?.copyWith(
+                    fontWeight: FontWeight.bold,
+                    color: Colors.black54,
+                  ),
+                ).padB(5),
+              ),
               SliverList(
                 delegate: SliverChildBuilderDelegate((context, index) {
                   final OrderEntity order = data[index];
+                  total += order.total;
                   return OrderItem(order: order);
                 }, childCount: data.length),
               )
